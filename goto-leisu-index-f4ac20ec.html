@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料整理与信息索引 — 雷速</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e2a36;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6eaed;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b1a26;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto;
+      color: #3f4d5a;
+    }
+
+    /* 卡片网格 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8ec;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      padding: 1.75rem 1.5rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #14222e;
+      border-left: 4px solid #6f7e8b;
+      padding-left: 0.75rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      padding: 0.3rem 0;
+      font-size: 0.95rem;
+      color: #2a3846;
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #6f7e8b;
+      font-weight: bold;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2a3846;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 说明区（全宽卡片） */
+    .explain {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8ec;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      padding: 2rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .explain h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #14222e;
+      margin-bottom: 1rem;
+    }
+
+    .explain p {
+      margin-bottom: 1rem;
+      color: #2a3846;
+    }
+
+    .explain p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e8ec;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+      padding: 2rem 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #14222e;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #ecf0f3;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #1e2a36;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item span {
+      font-size: 0.95rem;
+      color: #3f4d5a;
+    }
+
+    /* 底部 */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #dce2e7;
+      color: #4d5c6a;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #1e2a36;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .footer a:hover {
+      border-bottom-color: #1e2a36;
+    }
+
+    /* 内联链接 */
+    .inline-link {
+      color: #1e2a36;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #abb8c4;
+      font-weight: 500;
+      transition: text-decoration-color 0.15s;
+    }
+
+    .inline-link:hover {
+      text-decoration-color: #1e2a36;
+    }
+
+    .attn {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      border-left: 4px solid #8899a6;
+      color: #2a3846;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .card, .explain, .faq-summary {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero 区 -->
+  <div class="hero">
+    <h1>信息索引·资料整理</h1>
+    <p>围绕「<a href="https://goto-leisu.com" class="inline-link">雷速</a>」构建的结构化笔记与来源汇编，方便快速定位和横向参考。</p>
+  </div>
+
+  <!-- 优势区（两栏卡片） -->
+  <div class="grid">
+    <div class="card">
+      <h2>整理方式</h2>
+      <ul>
+        <li>按主题分类归档，保留原始发布时间</li>
+        <li>每条记录附带简洁摘要与标签</li>
+        <li>定期更新，去除重复和失效内容</li>
+        <li>支持关键词索引和交叉引用</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>使用场景</h2>
+      <ul>
+        <li>快速回顾某类信息的历史脉络</li>
+        <li>对比不同来源的表述和视角</li>
+        <li>作为个人笔记或团队知识库底稿</li>
+        <li>离线保存与本地检索</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 说明区（单列全宽） -->
+  <div class="explain">
+    <h2>资料整理的基本思路</h2>
+    <p>
+      这一页所集合的内容，主要来自对公开材料的摘录、归纳和再组织。整理的初衷是降低重复查找的成本，把零散的信息点连成可读的线索。
+    </p>
+    <p>
+      每条记录都会标注来源与日期，但不会对原文进行主观改写或价值判断。如果你需要核对原始表述，建议直接查阅出处。本页只承担索引和摘要的功能。
+    </p>
+    <div class="attn">
+      注意：本站不存储任何原始文件，也不提供下载服务。所有引用均以链接形式指向外部页面，请遵守各站点的使用条款。
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h2>常见问题 · 摘要</h2>
+    <div class="faq-item">
+      <strong>这些资料多久更新一次？</strong>
+      <span>大致每月整理一次，遇到重要变动会临时补充。每次更新都会在页面底部标注日期。</span>
+    </div>
+    <div class="faq-item">
+      <strong>我可以复制或转发这里的整理内容吗？</strong>
+      <span>可以。本页内容采用开放整理方式，不设版权限制。但建议同时附上原始来源链接，以保证信息可追溯。</span>
+    </div>
+    <div class="faq-item">
+      <strong>为什么选择用卡片和列表呈现？</strong>
+      <span>为了降低阅读负担，同时也便于后续用脚本提取或转换成其他格式（如 CSV、JSON）。</span>
+    </div>
+    <div class="faq-item">
+      <strong>这个页面和“雷速”是什么关系？</strong>
+      <span>这是一个围绕 <a href="https://goto-leisu.com" class="inline-link">雷速</a> 所做的外部资料整理页，不属于官方渠道，仅代表个人或团队的归纳视角。</span>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <p>资料整理 · 更新于 2025-04 &nbsp;|&nbsp; 基于公开信息汇编，仅供参考</p>
+    <p style="margin-top:0.4rem;"><a href="https://goto-leisu.com">雷速</a> — 信息索引页</p>
+  </div>
+
+</div>
+</body>
+</html>
