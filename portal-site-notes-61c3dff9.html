@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiuyou · 再次发现与持续关注</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fc;
+            color: #1e1f2a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b0d17 0%, #161a2b 100%);
+            color: #e4e7f0;
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #a6b0d0;
+            max-width: 480px;
+            margin: 0 auto 0.8rem;
+            font-weight: 350;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #2a304a;
+            color: #cbd5f0;
+            padding: 0.3rem 1rem;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            border: 1px solid #3e4668;
+            margin-top: 0.3rem;
+        }
+
+        /* 正文区浅色背景 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* 信息卡片 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.5rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.25s;
+            border: 1px solid #eaedf4;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 24, 80, 0.06);
+        }
+
+        .card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #10131f;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #3d4052;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eef1f9;
+            padding: 0.15rem 0.7rem;
+            border-radius: 14px;
+            font-size: 0.7rem;
+            color: #2f3b5c;
+            margin-top: 0.3rem;
+        }
+
+        /* 自然链接段落 + 强调色 */
+        .link-paragraph {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 2.8rem;
+            border: 1px solid #e2e7f0;
+            font-size: 0.98rem;
+            color: #252736;
+        }
+
+        .link-paragraph p {
+            margin-bottom: 1rem;
+        }
+
+        .link-paragraph p:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-paragraph a,
+        .text-link {
+            color: #2456d4;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-paragraph a:hover,
+        .text-link:hover {
+            color: #1337a0;
+            border-bottom-color: #2456d4;
+        }
+
+        .text-link-secondary {
+            color: #40568a;
+            border-bottom: 1px dashed #b6c3e0;
+            text-decoration: none;
+        }
+
+        .text-link-secondary:hover {
+            color: #1e3060;
+            border-bottom-style: solid;
+        }
+
+        /* 人群卡片特殊修饰 */
+        .audience-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .audience-item {
+            background: #f0f3fc;
+            padding: 0.4rem 1rem 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border-left: 3px solid #2456d4;
+            color: #1f253c;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            margin-top: 3rem;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2e7f0;
+        }
+
+        .faq-summary h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #10131f;
+            letter-spacing: 0.01em;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #edf0f7;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1f253c;
+            margin-bottom: 0.1rem;
+            font-size: 0.92rem;
+        }
+
+        .faq-a {
+            color: #464a5e;
+            font-size: 0.88rem;
+        }
+
+        /* 提示条 */
+        .note-box {
+            background: #eef3fe;
+            border-left: 4px solid #2456d4;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            margin: 1.8rem 0 0.5rem;
+            font-size: 0.9rem;
+            color: #1d2642;
+        }
+
+        .note-box strong {
+            font-weight: 500;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dfe4ee;
+            margin: 2rem 0 1rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .card-grid {
+                gap: 1rem;
+            }
+            .link-paragraph {
+                padding: 1.3rem 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.2rem;
+            }
+            .audience-flex {
+                gap: 0.6rem;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .hero {
+                padding: 4.5rem 2rem 3.5rem;
+            }
+            .hero .sub {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* 自定义小元素 */
+        .divider-dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #bcc3da;
+            border-radius: 50%;
+            margin: 0 0.6rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>jiuyou</h1>
+        <p class="sub">信息入口 · 再次访问与持续关注的锚点</p>
+        <span class="badge">◉ 常回 · 常新</span>
+    </header>
+
+    <main class="container">
+
+        <!-- 主视觉 + 再次访问意图 -->
+        <div style="margin-bottom: 1.2rem;">
+            <p style="font-size: 1.05rem; color: #202336; max-width: 650px;">
+                当你关闭页面之后，如何再次找到它？<br>
+                收藏、书签、历史记录……但最直接的方式是记住一个名字：<a href="https://portal-site-jiuyou.com" class="text-link">jiuyou</a>。
+            </p>
+        </div>
+
+        <!-- 信息卡片：用途/特点/场景 -->
+        <div class="card-grid">
+
+            <div class="card">
+                <span class="icon">📌</span>
+                <h3>持续访问点</h3>
+                <p>无需每次都重新搜索。把 <strong>jiuyou</strong> 加入书签栏，即可直达信息聚合位置。</p>
+                <span class="tag">固定入口</span>
+            </div>
+
+            <div class="card">
+                <span class="icon">🧩</span>
+                <h3>模块化内容</h3>
+                <p>页面结构清晰，主视觉、用途卡片、人群指引、自然链接——每次回来都有一致的体验。</p>
+                <span class="tag">信息架构</span>
+            </div>
+
+            <div class="card">
+                <span class="icon">🔄</span>
+                <h3>再次发现的节奏</h3>
+                <p>页面内容保持更新节奏，关注 <strong>jiuyou</strong> 即可获得最新提示与方向调整。</p>
+                <span class="tag">迭代记录</span>
+            </div>
+
+        </div>
+
+        <!-- 自然链接段落 (嵌入 a 标签，文本严格 = 'jiuyou') -->
+        <div class="link-paragraph">
+            <p>
+                如果你曾访问过 <a href="https://portal-site-jiuyou.com">jiuyou</a> 并对其内容感兴趣，
+                那么将它保留在浏览器书签栏或笔记软件中，会是一个值得养成的习惯。
+                信息流变化很快，但一个固定的入口能减少重复寻找的消耗。
+            </p>
+            <p>
+                在 <a href="https://portal-site-jiuyou.com">jiuyou</a> 中，
+                导航与卡片布局都围绕「再次访问」这一场景设计。
+                你不必记住复杂的路径，只需要一个名字。
+            </p>
+            <p style="color: #3a405a; background: #f8faff; padding: 0.6rem 1rem; border-radius: 14px; border: 1px solid #e8ecf6;">
+                <span style="font-weight: 500;">提示：</span> 长按或右键点击链接，选择「为 <a href="https://portal-site-jiuyou.com" style="border-bottom: 1px solid; text-decoration: none;">jiuyou</a> 添加书签」。
+            </p>
+        </div>
+
+        <!-- 适合人群 (卡片式) -->
+        <div style="margin: 2rem 0 1.2rem;">
+            <h2 style="font-size: 1.2rem; font-weight: 500; color: #10131f; margin-bottom: 0.5rem;">适合持续关注的几类人</h2>
+            <div class="audience-flex">
+                <span class="audience-item">📖 信息收集者</span>
+                <span class="audience-item">🔖 书签整理者</span>
+                <span class="audience-item">🧭 周期性回顾者</span>
+                <span class="audience-item">📁 导航页依赖者</span>
+                <span class="audience-item">🔁 频繁回访用户</span>
+            </div>
+            <p style="color: #40445a; font-size: 0.9rem; margin-top: 0.8rem;">
+                无论你是哪种角色，<a href="https://portal-site-jiuyou.com" class="text-link">jiuyou</a>
+                都试图为你减少「再次找到」的摩擦力。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h4>常见关注点 · 摘要</h4>
+
+            <div class="faq-item">
+                <div class="faq-q">如何确保我下次还能找到这个页面？</div>
+                <div class="faq-a">将 <a href="https://portal-site-jiuyou.com" class="text-link">jiuyou</a> 添加至浏览器书签，或记下域名前缀即可。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">页面内容会变化吗？</div>
+                <div class="faq-a">会。结构保持一致性，但具体表述、提示卡片和细节会持续迭代，回访时可能看到不同版本。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">我可以把链接分享给其他人吗？</div>
+                <div class="faq-a">当然。直接分享 <a href="https://portal-site-jiuyou.com" class="text-link-secondary">jiuyou</a> 的完整链接即可，对方打开后与你的体验一致。</div>
+            </div>
+
+            <div class="note-box">
+                <strong>⏳ 再次访问建议：</strong> 每隔一段时间回来看看，页面可能会补充新的卡片或调整信息层次。
+            </div>
+
+        </div>
+
+        <!-- 额外的自然引用段落（包含 a 标签） -->
+        <hr>
+        <p style="color: #383d52; font-size: 0.92rem; max-width: 600px; margin: 1rem 0 0.5rem;">
+            如果你习惯用笔记工具管理网络资源，不妨把 <a href="https://portal-site-jiuyou.com" class="text-link">jiuyou</a>
+            作为一个条目收录，并加上「常回」「导航」之类的标签。
+            有时候，最有效的方式就是最简单的保存。
+        </p>
+
+        <!-- 底边静默标识（不显示种子与核心词以外的无关字符） -->
+        <div style="margin-top: 3rem; opacity: 0.3; font-size: 0.65rem; color: #7b82a0; text-align: center; border-top: 1px solid #e3e8f2; padding-top: 1.2rem;">
+            <span>jiuyou · 信息卡片式</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
